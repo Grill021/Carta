@@ -228,17 +228,19 @@
     }
 
     #yesBtn, #noBtn {
-      position: absolute;
-      transform-origin: center center;
-      white-space: nowrap;
-      user-select: none;
+      left: 55%;
+      top: 20%;
+      min-width: 170px;
+      z-index: 1;
+      font-size: 0.98rem;
+      line-height: 1.15;
     }
 
     #yesBtn {
-      left: 12%;
-      top: 44%;
-      min-width: 112px;
-      z-index: 1;
+      left: 10%;
+      top: 60%;
+      min-width: 120px;
+      z-index: 2;
     }
 
     #noBtn {
@@ -529,16 +531,13 @@
       const stageWidth = proposalStage.clientWidth;
       const stageHeight = proposalStage.clientHeight;
 
-      const yesPos = getBasePosition(yesBtn);
-      const noPos = getBasePosition(noBtn);
+      // Forzar separación inicial clara
+      if (!escapeMode && noCount === 0) {
+        yesBtn.style.left = `${stageWidth * 0.1}px`;
+        yesBtn.style.top = `${stageHeight * 0.6}px`;
 
-      const yesRect = getScaledRect(yesBtn, yesScale, yesPos.left, yesPos.top);
-      const noRect = getScaledRect(noBtn, noScale, noPos.left, noPos.top);
-
-      let correctedYesLeft = clamp(yesPos.left, (yesRect.width - yesBtn.offsetWidth) / 2, stageWidth - yesBtn.offsetWidth - (yesRect.width - yesBtn.offsetWidth) / 2);
-      let correctedYesTop = clamp(yesPos.top, (yesRect.height - yesBtn.offsetHeight) / 2, stageHeight - yesBtn.offsetHeight - (yesRect.height - yesBtn.offsetHeight) / 2);
-
-      yesBtn.style.left = `${correctedYesLeft}px`;
+        noBtn.style.left = `${stageWidth * 0.55}px`;
+        noBtn.style.toppx`;
       yesBtn.style.top = `${correctedYesTop}px`;
 
       let correctedNoLeft = clamp(noPos.left, 0, Math.max(0, stageWidth - noBtn.offsetWidth));
@@ -595,3 +594,4 @@
   </script>
 </body>
 </html>
+
